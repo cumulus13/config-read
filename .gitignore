@@ -1,0 +1,48 @@
+# Binaries
+config-read
+config-read.exe
+build/
+dist/
+
+# Test binary
+*.test
+
+# Coverage
+*.out
+coverage.html
+
+# Go workspace
+go.work
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+vendor/
+
+# Environment
+.env
+.env.local
+
+# Air (hot reload)
+tmp/
+.air.toml
+# PT backup directory
+.pt/
+
+# Added entries (1 items)
+ANSWER*
+
+# Added entries (1 items)
+INSTALL.md
+
+# Added entries (1 items)
+*sublime*

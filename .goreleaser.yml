@@ -1,0 +1,78 @@
+before:
+  hooks:
+    - go mod tidy
+    - go generate ./...
+
+builds:
+  - id: config-read
+    main: ./cmd/config-read/
+    binary: config-read
+    ldflags:
+      - -s -w
+      - -X main.version={{.Version}}
+      - -X main.commit={{.Commit}}
+      - -X main.buildTime={{.Date}}
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ignore:
+      - goos: darwin
+        goarch: arm64
+      - goos: windows
+        goarch: arm64
+
+archives:
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- .Version }}_
+      {{- .Os }}_
+      {{- .Arch }}
+    format_overrides:
+      - goos: windows
+        format: zip
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^ci:'
+      - '^chore:'
+
+brews:
+  - name: config-read
+    homepage: "https://github.com/cumulus13/config-read"
+    description: "Read config files with syntax highlighting and sensitive data masking"
+    license: "MIT"
+    repository:
+      owner: cumulus13
+      name: homebrew-tap
+
+nfpms:
+  - id: config-read
+    package_name: config-read
+    file_name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Arch }}"
+    vendor: cumulus13
+    homepage: https://github.com/cumulus13/config-read
+    maintainer: cumulus13 <cumulus13@gmail.com>
+    description: Read config files with syntax highlighting and sensitive data masking
+    license: MIT
+    formats:
+      - deb
+      - rpm
+      - apk
+    bindir: /usr/bin

@@ -1,0 +1,54 @@
+# Database Configuration
+database:
+  host: localhost
+  port: 5432
+  name: myapp
+  user: admin
+  password: super_secret_db_password_123
+  ssl_mode: require
+
+# API Keys
+api:
+  key: sk_live_abcdef1234567890
+  secret: whsec_this_is_a_very_long_secret_key
+  version: v1
+
+# JWT Configuration
+jwt:
+  secret: jwt_signing_key_must_be_replaced
+  access_token_expiry: 15m
+  refresh_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+# AWS Credentials
+aws:
+  access_key_id: AKIAIOSFODNN7EXAMPLE
+  secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  session_token: FQoGZXIvYXdzEJr...
+
+# Redis
+redis:
+  password: redis_complex_password_2024
+  sentinel_password: sentinel_secret_key
+```
+
+## 8. **examples/config.json**
+
+```json
+{
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "name": "myapp",
+    "username": "root",
+    "password": "mysql_root_password_2024"
+  },
+  "oauth": {
+    "client_id": "abc123",
+    "client_secret": "ghp_this_is_github_token_secret",
+    "callback_url": "https://example.com/auth/callback"
+  },
+  "features": {
+    "debug": true,
+    "max_retries": 3
+  }
+}
