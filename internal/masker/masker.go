@@ -26,6 +26,7 @@ var defaultSensitivePatterns = []string{
 	`jwt`,
 	`ssn`,
 	`credit[_-]?card`,
+	`app_password`,
 	
 	// AWS specific
 	`aws[_-]?access[_-]?key[_-]?id`,
