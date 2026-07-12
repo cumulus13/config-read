@@ -45,6 +45,7 @@ var defaultSensitivePatterns = []string{
 	`signing[_-]?key`,
 	`oauth`,
 	`client[_-]?secret`,
+	`_pw`,
 }
 
 func NewMasker(additionalPatterns []string) *Masker {
