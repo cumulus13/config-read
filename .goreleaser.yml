@@ -5,7 +5,7 @@ before:
 
 builds:
   - id: config-read
-    main: ./cmd/config-read/main.go
+    main: .
     binary: config-read
     ldflags:
       - -s -w
