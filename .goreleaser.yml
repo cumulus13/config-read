@@ -41,6 +41,18 @@ archives:
 checksum:
   name_template: 'checksums.txt'
 
+# Add this block to sign your binaries and checksums with GPG
+signs:
+  - artifacts: checksum
+    args:
+      - "--batch"
+      - "--local-user"
+      - "{{ .Env.GPG_FINGERPRINT }}" # Uses the fingerprint exported by crazy-max/ghaction-import-gpg
+      - "--output"
+      - "${signature}"
+      - "--detach-sign"
+      - "${artifact}"
+
 snapshot:
   name_template: "{{ incpatch .Version }}-next"
 
